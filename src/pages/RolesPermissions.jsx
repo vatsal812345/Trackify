@@ -120,7 +120,7 @@ const RolesPermissions = () => {
         ))}
 
         {/* Create New Role Card */}
-        <Card className="border-2 border-dashed border-slate-200 dark:border-zinc-800 bg-white/20 dark:bg-white/2 shadow-none flex flex-col items-center justify-center p-8 hover:bg-white/40 dark:hover:bg-white/5 transition-all group cursor-pointer">
+        <Card className="border-2 border-dashed border-slate-200 dark:border-zinc-800 bg-white/20 dark:bg-white/2 shadow-none flex flex-col items-center justify-center p-6 md:p-8 hover:bg-white/40 dark:hover:bg-white/5 transition-all group cursor-pointer">
            <div className="w-16 h-16 rounded-3xl bg-slate-100 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500">
               <Plus size={32} className="stroke-3" />
            </div>

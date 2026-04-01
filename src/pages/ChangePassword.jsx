@@ -41,12 +41,12 @@ const ChangePassword = () => {
       <Card className="glass border-none shadow-xl overflow-hidden relative">
         <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-blue-500 via-indigo-500 to-purple-500"></div>
         
-        <CardHeader className="px-8 pt-10 pb-6 text-center">
-          <CardTitle className="text-xl font-black text-slate-800 dark:text-white uppercase tracking-tight">Security Credentials</CardTitle>
-          <CardDescription className="text-xs font-medium">Passwords must be at least 8 characters long and include special symbols.</CardDescription>
+        <CardHeader className="px-4 md:px-8 pt-10 pb-6 text-center">
+          <CardTitle className="text-lg md:text-xl font-black text-slate-800 dark:text-white uppercase tracking-tight">Security Credentials</CardTitle>
+          <CardDescription className="text-[10px] md:text-xs font-medium">Passwords must be at least 8 characters long and include special symbols.</CardDescription>
         </CardHeader>
 
-        <CardContent className="px-8 pb-10 space-y-6">
+        <CardContent className="px-4 md:px-8 pb-10 space-y-6">
           <div className="space-y-4">
             {/* Old Password */}
             <div className="space-y-2">
@@ -110,7 +110,7 @@ const ChangePassword = () => {
             <Button 
               onClick={handleUpdate}
               disabled={isUpdating}
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white border-none font-bold uppercase tracking-[0.15em] text-[12px] h-14 rounded-2xl shadow-xl shadow-blue-500/20 transition-all hover:scale-[1.02] active:scale-95 disabled:opacity-70 group"
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white border-none font-bold uppercase tracking-[0.15em] text-[11px] h-14 rounded-2xl shadow-xl shadow-blue-500/20 transition-all hover:scale-[1.02] active:scale-95 disabled:opacity-70 group"
             >
               {isUpdating ? (
                 <>

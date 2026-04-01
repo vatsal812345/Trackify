@@ -51,28 +51,28 @@ const SettingsProfile = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Left Column: Avatar & Quick Info */}
         <div className="lg:col-span-1 space-y-6">
-          <Card className="glass border-none shadow-sm overflow-hidden text-center p-8">
+          <Card className="glass border-none shadow-sm overflow-hidden text-center p-6 md:p-8">
             <div className="relative inline-block mb-6">
-              <Avatar className="w-32 h-32 border-4 border-white dark:border-zinc-800 shadow-xl ring-4 ring-blue-500/10">
+              <Avatar className="w-24 h-24 md:w-32 md:h-32 border-4 border-white dark:border-zinc-800 shadow-xl ring-4 ring-blue-500/10">
                 <AvatarImage src="https://avatar.vercel.sh/vatsal" />
-                <AvatarFallback className="text-3xl font-black bg-slate-100 dark:bg-zinc-900">VP</AvatarFallback>
+                <AvatarFallback className="text-2xl md:text-3xl font-black bg-slate-100 dark:bg-zinc-900">VP</AvatarFallback>
               </Avatar>
-              <button className="absolute bottom-1 right-1 p-2.5 bg-blue-600 text-white rounded-2xl shadow-lg shadow-blue-500/40 hover:scale-110 active:scale-95 transition-all">
-                <Camera size={18} />
+              <button className="absolute bottom-1 right-1 p-2 md:p-2.5 bg-blue-600 text-white rounded-xl md:rounded-2xl shadow-lg shadow-blue-500/40 hover:scale-110 active:scale-95 transition-all">
+                <Camera size={16} />
               </button>
             </div>
-            <h3 className="text-2xl font-black text-slate-800 dark:text-white mb-1 uppercase tracking-tight">Vatsal Prajapati</h3>
-            <p className="text-xs font-bold text-blue-600 uppercase tracking-widest mb-6">Super Admin</p>
+            <h3 className="text-xl md:text-2xl font-black text-slate-800 dark:text-white mb-1 uppercase tracking-tight">Vatsal Prajapati</h3>
+            <p className="text-[10px] md:text-xs font-bold text-blue-600 uppercase tracking-widest mb-6">Super Admin</p>
             
             <div className="flex justify-center gap-3">
-              <Button variant="ghost" size="icon" className="h-10 w-10 rounded-xl bg-slate-100 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-slate-400 hover:text-blue-400 transition-all">
-                <Twitter size={18} />
+              <Button variant="ghost" size="icon" className="h-9 w-9 md:h-10 md:w-10 rounded-xl bg-slate-100 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-slate-400 hover:text-blue-400 transition-all">
+                <Twitter size={16} />
               </Button>
-              <Button variant="ghost" size="icon" className="h-10 w-10 rounded-xl bg-slate-100 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-slate-400 hover:text-slate-100 transition-all">
-                <Github size={18} />
+              <Button variant="ghost" size="icon" className="h-9 w-9 md:h-10 md:w-10 rounded-xl bg-slate-100 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-slate-400 hover:text-slate-100 transition-all">
+                <Github size={16} />
               </Button>
-              <Button variant="ghost" size="icon" className="h-10 w-10 rounded-xl bg-slate-100 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-slate-400 hover:text-blue-600 transition-all">
-                <Linkedin size={18} />
+              <Button variant="ghost" size="icon" className="h-9 w-9 md:h-10 md:w-10 rounded-xl bg-slate-100 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-slate-400 hover:text-blue-600 transition-all">
+                <Linkedin size={16} />
               </Button>
             </div>
           </Card>
@@ -97,12 +97,12 @@ const SettingsProfile = () => {
         {/* Right Column: Detailed Forms */}
         <div className="lg:col-span-2 space-y-6">
           <Card className="glass border-none shadow-sm overflow-hidden">
-            <CardHeader className="border-b border-slate-100 dark:border-zinc-800/50 px-8 py-6">
-              <CardTitle className="text-xl font-black text-slate-800 dark:text-white uppercase tracking-tight">Personal Information</CardTitle>
-              <CardDescription className="text-xs font-medium">Update your name, email, and basic contact details.</CardDescription>
+            <CardHeader className="border-b border-slate-100 dark:border-zinc-800/50 px-4 md:px-8 py-6">
+              <CardTitle className="text-lg md:text-xl font-black text-slate-800 dark:text-white uppercase tracking-tight">Personal Information</CardTitle>
+              <CardDescription className="text-[10px] md:text-xs font-medium">Update your name, email, and basic contact details.</CardDescription>
             </CardHeader>
-            <CardContent className="p-8 space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <CardContent className="p-4 md:p-8 space-y-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-[10px] font-black text-slate-400 dark:text-zinc-500 uppercase tracking-widest pl-1">Full Name</label>
                   <div className="relative">
@@ -152,12 +152,12 @@ const SettingsProfile = () => {
           </Card>
 
           <Card className="glass border-none shadow-sm overflow-hidden">
-            <CardHeader className="border-b border-slate-100 dark:border-zinc-800/50 px-8 py-6">
-              <CardTitle className="text-xl font-black text-slate-800 dark:text-white uppercase tracking-tight">Professional Profile</CardTitle>
-              <CardDescription className="text-xs font-medium">Information about your role and expertise.</CardDescription>
+            <CardHeader className="border-b border-slate-100 dark:border-zinc-800/50 px-4 md:px-8 py-6">
+              <CardTitle className="text-lg md:text-xl font-black text-slate-800 dark:text-white uppercase tracking-tight">Professional Profile</CardTitle>
+              <CardDescription className="text-[10px] md:text-xs font-medium">Information about your role and expertise.</CardDescription>
             </CardHeader>
-            <CardContent className="p-8 space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <CardContent className="p-4 md:p-8 space-y-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-[10px] font-black text-slate-400 dark:text-zinc-500 uppercase tracking-widest pl-1">Current Role</label>
                   <div className="relative">

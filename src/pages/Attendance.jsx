@@ -181,27 +181,27 @@ const Attendance = () => {
       {/* Filters & Table */}
       <div className="card overflow-hidden border border-slate-100 dark:border-zinc-800 shadow-sm">
         {/* Table Controls */}
-        <div className="p-6 border-b border-slate-100 dark:border-zinc-800 flex flex-col lg:flex-row lg:items-center justify-between gap-4 bg-slate-50/50 dark:bg-zinc-900/30">
-          <div className="flex flex-1 items-center gap-3">
-            <div className="relative flex-1 max-w-sm group">
-              <div className="absolute inset-y-0 left-3.5 flex items-center pointer-events-none text-slate-400 group-focus-within:text-blue-500 transition-colors">
-                <Search size={18} />
+        <div className="p-4 md:p-6 border-b border-slate-100 dark:border-zinc-800 bg-slate-50/50 dark:bg-zinc-900/30">
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+            <div className="flex flex-col sm:flex-row flex-1 items-center gap-3 w-full">
+              <div className="relative flex-1 w-full lg:max-w-sm group">
+                <div className="absolute inset-y-0 left-3.5 flex items-center pointer-events-none text-slate-400 group-focus-within:text-blue-500 transition-colors">
+                  <Search size={18} />
+                </div>
+                <input 
+                  type="text"
+                  placeholder="Search employee or role..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full pl-11 pr-4 py-2.5 bg-white dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 rounded-xl text-sm focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all placeholder:text-slate-400"
+                />
               </div>
-              <input 
-                type="text"
-                placeholder="Search employee or role..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-11 pr-4 py-2.5 bg-white dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 rounded-xl text-sm focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all placeholder:text-slate-400"
-              />
-            </div>
 
-            <div className="flex items-center gap-2">
-              <div className="relative">
+              <div className="relative w-full sm:w-auto">
                 <select 
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value)}
-                  className="pl-4 pr-10 py-2.5 bg-white dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 rounded-xl text-sm font-bold text-slate-700 dark:text-zinc-300 appearance-none focus:ring-4 focus:ring-blue-500/10 outline-none cursor-pointer hover:border-slate-300 dark:hover:border-zinc-700 transition-all min-w-[140px]"
+                  className="w-full pl-4 pr-10 py-2.5 bg-white dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 rounded-xl text-sm font-bold text-slate-700 dark:text-zinc-300 appearance-none focus:ring-4 focus:ring-blue-500/10 outline-none cursor-pointer hover:border-slate-300 dark:hover:border-zinc-700 transition-all sm:min-w-[140px]"
                 >
                   <option value="All">All Status</option>
                   <option value="Present">Present</option>
@@ -211,18 +211,16 @@ const Attendance = () => {
                 <ChevronDown size={14} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
               </div>
             </div>
-          </div>
 
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 rounded-xl text-sm font-bold text-slate-600 dark:text-zinc-400">
+            <div className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 rounded-xl text-[10px] sm:text-sm font-bold text-slate-600 dark:text-zinc-400 w-full lg:w-auto justify-center">
               <Calendar size={16} className="text-blue-500" />
               <span>{dateRange} (Mar 27, 2026)</span>
             </div>
           </div>
         </div>
 
-        {/* Table Content */}
-        <div className="overflow-x-auto">
+        {/* Table Content - Desktop */}
+        <div className="hidden lg:block overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="bg-slate-50/50 dark:bg-zinc-900/50 border-b border-slate-100 dark:border-zinc-800">
@@ -275,15 +273,63 @@ const Attendance = () => {
                     </td>
                   </tr>
                 ))
-              ) : (
-                <tr>
-                  <td colSpan="6" className="px-6 py-12 text-center text-slate-400 dark:text-zinc-500 font-bold italic">
-                    No results found matching your search or filters.
-                  </td>
-                </tr>
-              )}
+              ) : null}
             </tbody>
           </table>
+        </div>
+
+        {/* Card View - Mobile/Tablet */}
+        <div className="lg:hidden divide-y divide-slate-100 dark:divide-zinc-800/50">
+          {filteredData.length > 0 ? (
+            filteredData.map((item) => (
+              <div key={item.id} className="p-4 space-y-4 hover:bg-slate-50/50 dark:hover:bg-white/5 transition-colors">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <img src={item.avatar} alt={item.name} className="w-10 h-10 rounded-full border-2 border-slate-100 dark:border-zinc-800 bg-slate-100" />
+                    <div>
+                      <p className="text-sm font-black text-slate-800 dark:text-white">{item.name}</p>
+                      <p className="text-[10px] font-bold text-slate-400 dark:text-zinc-500 uppercase">{item.role}</p>
+                    </div>
+                  </div>
+                  <span className={`px-2.5 py-0.5 rounded-full text-[9px] font-black uppercase tracking-wider ${getStatusStyles(item.status)}`}>
+                    {item.status}
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4 py-3 px-4 bg-slate-50/50 dark:bg-zinc-900/50 rounded-2xl">
+                  <div className="space-y-1">
+                    <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Check-In</p>
+                    <div className="flex items-center gap-1.5 text-xs font-black text-slate-700 dark:text-zinc-300">
+                      <ArrowUpRight size={12} className="text-emerald-500" />
+                      {item.checkIn}
+                    </div>
+                  </div>
+                  <div className="space-y-1">
+                    <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Check-Out</p>
+                    <div className="flex items-center gap-1.5 text-xs font-black text-slate-700 dark:text-zinc-300">
+                      {item.checkOut !== '--:--' && <ArrowDownRight size={12} className="text-rose-500" />}
+                      {item.checkOut}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between pt-1">
+                  <span className="text-[10px] font-bold text-slate-400">{item.date}</span>
+                  <button 
+                    onClick={() => handleOpenModal(item)}
+                    className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-xl text-[10px] font-black uppercase tracking-wider"
+                  >
+                    <Eye size={14} />
+                    Details
+                  </button>
+                </div>
+              </div>
+            ))
+          ) : (
+            <div className="px-6 py-12 text-center text-slate-400 dark:text-zinc-500 font-bold italic">
+              No results found matching your search or filters.
+            </div>
+          )}
         </div>
         
         {/* Pagination Shadow */}

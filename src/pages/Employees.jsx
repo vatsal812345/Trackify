@@ -126,8 +126,8 @@ const Employees = () => {
         </CardContent>
       </Card>
 
-      {/* Employee List */}
-      <Card className="glass border-none shadow-sm overflow-hidden">
+      {/* Employee List - Desktop Table */}
+      <Card className="glass border-none shadow-sm overflow-hidden hidden md:block">
         <div className="overflow-x-auto">
           <table className="w-full text-left">
             <thead className="bg-slate-50/50 dark:bg-white/5 text-[10px] text-slate-400 dark:text-zinc-500 font-black uppercase tracking-[0.2em] border-b border-slate-100 dark:border-zinc-800">
@@ -197,6 +197,58 @@ const Employees = () => {
           </table>
         </div>
       </Card>
+
+      {/* Employee List - Mobile Cards */}
+      <div className="grid grid-cols-1 gap-4 md:hidden">
+        {employees.map((employee) => (
+          <Card key={employee.id} className="glass border-none shadow-sm overflow-hidden">
+             <CardContent className="p-5 space-y-4">
+                <div className="flex items-center justify-between">
+                   <div className="flex items-center gap-3">
+                      <Avatar className="w-12 h-12 border-2 border-white dark:border-zinc-900 shadow-sm ring-2 ring-blue-500/10">
+                        <AvatarImage src={employee.avatar} />
+                        <AvatarFallback className="text-[10px] font-bold">
+                          {employee.name.split(' ').map(n => n[0]).join('')}
+                        </AvatarFallback>
+                      </Avatar>
+                      <div className="flex flex-col">
+                        <span className="text-sm font-black text-slate-800 dark:text-zinc-100 uppercase tracking-tight">{employee.name}</span>
+                        <span className="text-[11px] font-bold text-blue-600 uppercase tracking-widest">{employee.role}</span>
+                      </div>
+                   </div>
+                   <Badge variant="outline" className={`px-2 py-0.5 font-black text-[8px] uppercase tracking-widest border-2 ${getStatusBadge(employee.status)}`}>
+                      {employee.status}
+                   </Badge>
+                </div>
+
+                <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100 dark:border-zinc-800/50">
+                   <div className="flex flex-col">
+                      <span className="text-[9px] font-black text-slate-400 dark:text-zinc-500 uppercase tracking-widest">Email Address</span>
+                      <span className="text-[11px] font-medium text-slate-600 dark:text-zinc-300 truncate">{employee.email}</span>
+                   </div>
+                   <div className="flex flex-col">
+                      <span className="text-[9px] font-black text-slate-400 dark:text-zinc-500 uppercase tracking-widest">Joined On</span>
+                      <span className="text-[11px] font-medium text-slate-600 dark:text-zinc-300">{employee.createdAt.split(' ')[0]}</span>
+                   </div>
+                </div>
+
+                <div className="flex items-center justify-end gap-2 pt-2">
+                   <Button variant="ghost" size="sm" className="h-9 gap-2 text-xs font-bold uppercase tracking-wider text-slate-500 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 px-3">
+                      <Eye size={14} />
+                      View
+                   </Button>
+                   <Button variant="ghost" size="sm" className="h-9 gap-2 text-xs font-bold uppercase tracking-wider text-slate-500 hover:text-amber-600 hover:bg-amber-50 dark:hover:bg-amber-900/20 px-3">
+                      <Edit size={14} />
+                      Edit
+                   </Button>
+                   <Button variant="ghost" size="sm" className="h-9 text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-900/20 px-3">
+                      <Trash2 size={14} />
+                   </Button>
+                </div>
+             </CardContent>
+          </Card>
+        ))}
+      </div>
     </div>
   );
 };

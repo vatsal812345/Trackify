@@ -16,7 +16,12 @@ import { useTheme } from '../../context/ThemeContext';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 
-const Header = ({ isSidebarCollapsed, setIsSidebarCollapsed }) => {
+const Header = ({ 
+  isSidebarCollapsed, 
+  setIsSidebarCollapsed,
+  isMobileSidebarOpen,
+  setIsMobileSidebarOpen
+}) => {
   const { user, logout } = useAuth();
   const { isDarkMode, toggleDarkMode } = useTheme();
   const location = useLocation();
@@ -86,14 +91,21 @@ const Header = ({ isSidebarCollapsed, setIsSidebarCollapsed }) => {
   }, []);
 
   return (
-    <header className="h-16 fixed top-0 right-0 z-40 bg-white dark:bg-zinc-950 border-b border-slate-200 dark:border-zinc-800 flex items-center justify-between px-6 transition-all duration-300" 
-      style={{ left: isSidebarCollapsed ? '80px' : '256px' }}>
+    <header className={`h-16 fixed top-0 right-0 z-40 bg-white dark:bg-zinc-950 border-b border-slate-200 dark:border-zinc-800 flex items-center justify-between px-4 lg:px-6 transition-all duration-300 ${
+      isSidebarCollapsed ? 'left-0 lg:left-20' : 'left-0 lg:left-64'
+    }`}>
       
-      <div className="flex items-center gap-6">
+      <div className="flex items-center gap-2 lg:gap-6">
         <Button 
           variant="ghost"
           size="icon"
-          onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
+          onClick={() => {
+            if (window.innerWidth < 1024) {
+              setIsMobileSidebarOpen(!isMobileSidebarOpen);
+            } else {
+              setIsSidebarCollapsed(!isSidebarCollapsed);
+            }
+          }}
           className="text-slate-500 dark:text-zinc-400"
         >
           <Menu size={22} />

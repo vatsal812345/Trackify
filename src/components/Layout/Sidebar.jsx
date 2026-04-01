@@ -23,7 +23,7 @@ import {
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
-const Sidebar = ({ isCollapsed, setIsCollapsed }) => {
+const Sidebar = ({ isCollapsed, setIsCollapsed, isMobileOpen, setIsMobileOpen }) => {
   const { logout } = useAuth();
   const location = useLocation();
 
@@ -81,7 +81,11 @@ const Sidebar = ({ isCollapsed, setIsCollapsed }) => {
   };
 
   return (
-    <aside className={`fixed top-0 left-0 h-full transition-all duration-300 z-50 flex flex-col bg-[#12141a] text-slate-400 ${isCollapsed ? 'w-20' : 'w-64'} border-r border-zinc-800`}>
+    <aside className={`fixed lg:static top-0 left-0 h-full transition-all duration-300 z-50 flex flex-col bg-[#12141a] text-slate-400 border-r border-zinc-800 ${
+      isCollapsed ? 'lg:w-20' : 'lg:w-64'
+    } ${
+      isMobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
+    }`}>
       {/* Logo Section */}
       <div className="h-16 flex items-center gap-3 px-6 mb-4">
         <div className="min-w-[32px] h-8 bg-blue-600 rounded flex items-center justify-center text-white font-bold shadow-lg shadow-blue-500/20">T</div>

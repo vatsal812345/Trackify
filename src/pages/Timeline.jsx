@@ -124,18 +124,18 @@ const Timeline = () => {
       </div>
 
       {/* Filter Bar */}
-      <div className="bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md border border-slate-100 dark:border-zinc-800 p-5 rounded-2xl shadow-sm flex flex-wrap items-center gap-4">
-        <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 dark:bg-zinc-900 rounded-lg text-slate-500 dark:text-zinc-400">
+      <div className="bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md border border-slate-100 dark:border-zinc-800 p-4 md:p-5 rounded-2xl shadow-sm grid grid-cols-1 sm:grid-cols-2 lg:flex lg:items-center gap-4">
+        <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 dark:bg-zinc-900 rounded-lg text-slate-500 dark:text-zinc-400 w-fit">
           <Filter size={16} />
           <span className="text-xs font-bold uppercase tracking-wider">Filters</span>
         </div>
 
         {/* Employee Select */}
-        <div className="relative group">
+        <div className="relative group w-full lg:w-auto">
           <select 
             value={selectedEmployee}
             onChange={(e) => setSelectedEmployee(e.target.value)}
-            className="pl-4 pr-10 py-2.5 bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-xl text-sm font-bold text-slate-600 dark:text-zinc-400 appearance-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all cursor-pointer hover:border-slate-300 dark:hover:border-zinc-700 min-w-[180px]"
+            className="w-full pl-4 pr-10 py-2.5 bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-xl text-sm font-bold text-slate-600 dark:text-zinc-400 appearance-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all cursor-pointer hover:border-slate-300 dark:hover:border-zinc-700 lg:min-w-[180px]"
           >
             <option>All Employees</option>
             <option>Vatsal Prajapati</option>
@@ -147,15 +147,15 @@ const Timeline = () => {
         </div>
 
         {/* Date Select */}
-        <div className="relative group">
-          <div className="flex items-center gap-2 pl-4 pr-4 py-2.5 bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-xl text-sm font-bold text-slate-600 dark:text-zinc-400 min-w-[180px]">
+        <div className="relative group w-full lg:w-auto">
+          <div className="flex items-center gap-2 pl-4 pr-4 py-2.5 bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-xl text-sm font-bold text-slate-600 dark:text-zinc-400 lg:min-w-[180px]">
             <Calendar size={16} className="text-slate-400" />
             <span>{selectedDate}</span>
           </div>
         </div>
 
         <button 
-          className="flex items-center gap-2 px-5 py-2.5 bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-xl text-sm font-black text-slate-600 dark:text-zinc-400 hover:bg-slate-50 dark:hover:bg-zinc-800 transition-all active:scale-95 shadow-sm ml-auto"
+          className="flex items-center justify-center gap-2 px-5 py-2.5 bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-xl text-sm font-black text-slate-600 dark:text-zinc-400 hover:bg-slate-50 dark:hover:bg-zinc-800 transition-all active:scale-95 shadow-sm lg:ml-auto w-full lg:w-auto"
         >
           <RotateCcw size={16} />
           Reset
@@ -186,8 +186,8 @@ const Timeline = () => {
               </div>
 
               {/* Activity Card */}
-              <div className={`w-full md:w-1/2 pl-16 md:pl-0 ${index % 2 === 0 ? 'md:pl-12' : 'md:pr-12'}`}>
-                <div className="group bg-white dark:bg-zinc-900 border border-slate-100 dark:border-zinc-800 p-6 rounded-[2rem] shadow-sm hover:shadow-2xl hover:shadow-blue-500/5 transition-all duration-500 relative overflow-hidden">
+              <div className={`w-full md:w-1/2 pl-14 md:pl-0 ${index % 2 === 0 ? 'md:pl-12' : 'md:pr-12'}`}>
+                <div className="group bg-white dark:bg-zinc-900 border border-slate-100 dark:border-zinc-800 p-4 md:p-6 rounded-2xl md:rounded-[2rem] shadow-sm hover:shadow-2xl hover:shadow-blue-500/5 transition-all duration-500 relative overflow-hidden">
                   {/* Subtle Gradient Background */}
                   <div className="absolute inset-0 bg-linear-to-br from-blue-500/0 to-indigo-500/0 group-hover:from-blue-500/2 group-hover:to-indigo-500/2 transition-colors duration-500"></div>
                   
@@ -197,7 +197,7 @@ const Timeline = () => {
                         <div className={`inline-flex px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest border ${getBadgeColor(activity.status)}`}>
                           {activity.type.replace('_', ' ')}
                         </div>
-                        <h3 className="text-lg font-bold text-slate-800 dark:text-white leading-tight mt-2">
+                        <h3 className="text-base md:text-lg font-bold text-slate-800 dark:text-white leading-tight mt-2">
                           {activity.action}
                         </h3>
                       </div>
@@ -206,13 +206,13 @@ const Timeline = () => {
                       </button>
                     </div>
 
-                    <p className="text-sm text-slate-500 dark:text-zinc-400 font-medium">
+                    <p className="text-xs md:text-sm text-slate-500 dark:text-zinc-400 font-medium">
                       {activity.details}
                     </p>
 
                     <div className="pt-4 border-t border-slate-50 dark:border-zinc-800/50 flex flex-wrap gap-4">
                       <div className="flex items-center gap-2">
-                        <div className="w-8 h-8 rounded-full bg-slate-100 dark:bg-zinc-800 flex items-center justify-center text-slate-400">
+                        <div className="w-8 h-8 rounded-full bg-slate-100 dark:bg-zinc-900 flex items-center justify-center text-slate-400">
                           <User size={14} />
                         </div>
                         <span className="text-xs font-bold text-slate-600 dark:text-zinc-300">{activity.user}</span>
@@ -224,7 +224,7 @@ const Timeline = () => {
                     </div>
 
                     {/* Mobile Time (visible only on mobile) */}
-                    <div className="md:hidden pt-2 flex items-center gap-2">
+                    <div className="md:hidden pt-2 flex items-center gap-2 border-t border-slate-50 dark:border-zinc-800/50">
                       <Clock size={14} className="text-blue-500" />
                       <span className="text-xs font-black text-blue-500">{activity.time} - {activity.date}</span>
                     </div>

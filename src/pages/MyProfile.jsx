@@ -36,7 +36,7 @@ const MyProfile = () => {
   return (
     <div className="max-w-4xl mx-auto">
       <div className="bg-white dark:bg-zinc-900 rounded-xl shadow-sm border border-slate-200 dark:border-zinc-800 overflow-hidden">
-        <form onSubmit={handleSubmit} className="p-8">
+        <form onSubmit={handleSubmit} className="p-4 md:p-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="space-y-6">
               {/* First Name */}
@@ -103,9 +103,9 @@ const MyProfile = () => {
               </div>
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-6 flex flex-col items-center md:items-start">
               {/* Photo Upload */}
-              <div className="space-y-2">
+              <div className="space-y-2 w-full max-w-[208px]">
                 <label className="text-sm font-semibold text-slate-700 dark:text-zinc-300">
                   Photo <span className="text-red-500 ml-0.5">*</span>
                 </label>
@@ -126,10 +126,10 @@ const MyProfile = () => {
           </div>
 
           {/* Action Buttons */}
-          <div className="mt-12 flex items-center gap-4 pt-8 border-t border-slate-100 dark:border-zinc-800">
+          <div className="mt-12 flex flex-col sm:flex-row items-center gap-4 pt-8 border-t border-slate-100 dark:border-zinc-800">
             <button
               type="submit"
-              className="flex items-center gap-2 px-6 py-2.5 bg-[#45b27a] hover:bg-[#3ca06b] text-white rounded-lg font-semibold transition-all shadow-sm"
+              className="flex items-center justify-center gap-2 px-6 py-2.5 bg-[#45b27a] hover:bg-[#3ca06b] text-white rounded-lg font-semibold transition-all shadow-sm w-full sm:w-auto"
             >
               <Save size={18} />
               Save
@@ -137,7 +137,7 @@ const MyProfile = () => {
             <button
               type="button"
               onClick={handleReset}
-              className="flex items-center gap-2 px-6 py-2.5 bg-[#e95d7e] hover:bg-[#d84a6b] text-white rounded-lg font-semibold transition-all shadow-sm"
+              className="flex items-center justify-center gap-2 px-6 py-2.5 bg-[#e95d7e] hover:bg-[#d84a6b] text-white rounded-lg font-semibold transition-all shadow-sm w-full sm:w-auto"
             >
               <RefreshCcw size={18} />
               Reset

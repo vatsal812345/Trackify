@@ -159,9 +159,9 @@ const Tasks = () => {
       </Card>
 
       {/* Kanban Board */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 min-h-[600px]">
+      <div className="flex flex-row overflow-x-auto gap-6 min-h-[600px] pb-6 scrollbar-hide">
         {columns.map((column) => (
-          <div key={column.id} className="flex flex-col gap-4">
+          <div key={column.id} className="flex flex-col gap-4 min-w-[280px] sm:min-w-[320px] shrink-0">
             <div className="flex items-center justify-between px-2">
               <div className="flex items-center gap-3">
                 <div className={`w-3 h-3 rounded-full ${column.color} shadow-sm shadow-${column.color}/20`}></div>

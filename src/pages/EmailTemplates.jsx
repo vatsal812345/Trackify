@@ -137,7 +137,7 @@ const EmailTemplates = () => {
         ))}
 
         {/* Custom Card for Creating New */}
-        <div className="border-2 border-dashed border-slate-200 dark:border-zinc-800 bg-white/10 dark:bg-white/1 rounded-3xl p-8 flex flex-col items-center justify-center space-y-4 hover:bg-white/30 dark:hover:bg-white/5 transition-all group cursor-pointer">
+        <div className="border-2 border-dashed border-slate-200 dark:border-zinc-800 bg-white/10 dark:bg-white/1 rounded-3xl p-6 md:p-8 flex flex-col items-center justify-center space-y-4 hover:bg-white/30 dark:hover:bg-white/5 transition-all group cursor-pointer">
            <div className="w-14 h-14 rounded-2xl bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 flex items-center justify-center group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500">
               <Plus size={28} className="stroke-3" />
            </div>
