@@ -7,16 +7,14 @@ const Layout = () => {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
-  // Auto-collapse sidebar on smaller screens
+  // Collapse sidebar initially on tablets but not mobile (drawer mode)
   React.useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 1024) {
+    const handleInitialCollapse = () => {
+      if (window.innerWidth >= 1024 && window.innerWidth < 1280) {
         setIsSidebarCollapsed(true);
       }
     };
-    handleResize(); // Check initial size
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    handleInitialCollapse();
   }, []);
 
   return (
