@@ -1,5 +1,6 @@
 import React from 'react';
 import { RadialBarChart, RadialBar, ResponsiveContainer, Legend, Cell } from 'recharts';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 
 const data = [
   { name: 'Inactive', value: 30, fill: '#64748b' },
@@ -10,19 +11,22 @@ const data = [
 
 const style = {
   top: '50%',
-  right: '5%',
+  right: '0%',
   transform: 'translate(0, -50%)',
   lineHeight: '32px',
 };
 
 const ProductivityChart = () => {
   return (
-    <div className="card h-full p-6 flex flex-col">
-      <h2 className="text-lg font-bold text-slate-800 dark:text-white mb-6">Productivity</h2>
-      <div className="flex-1 min-h-[300px] relative">
+    <Card className="glass border-none shadow-sm h-full flex flex-col overflow-hidden">
+      <CardHeader className="pb-2 border-b border-slate-100 dark:border-zinc-800/50">
+        <CardTitle className="text-xl font-black tracking-tight uppercase text-[15px] text-slate-600 dark:text-zinc-400">Analysis</CardTitle>
+        <CardDescription>Productivity breakdown</CardDescription>
+      </CardHeader>
+      <CardContent className="flex-1 p-6 relative min-h-[300px]">
         <ResponsiveContainer width="100%" height="100%">
           <RadialBarChart 
-            cx="40%" 
+            cx="35%" 
             cy="50%" 
             innerRadius="30%" 
             outerRadius="100%" 
@@ -38,21 +42,21 @@ const ProductivityChart = () => {
               cornerRadius={10}
             />
             <Legend 
-              iconSize={12} 
+              iconSize={10} 
               layout="vertical" 
               verticalAlign="middle" 
               wrapperStyle={style} 
               iconType="circle"
               formatter={(value) => (
-                <span className="text-sm font-medium text-slate-600 dark:text-zinc-400 ml-2">
+                <span className="text-[11px] font-black text-slate-500 dark:text-zinc-500 ml-2 uppercase tracking-widest">
                   {value}
                 </span>
               )}
             />
           </RadialBarChart>
         </ResponsiveContainer>
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
 };
 

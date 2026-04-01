@@ -54,7 +54,7 @@ const MyProfile = () => {
                   required
                 />
               </div>
-
+                              
               {/* Last Name */}
               <div className="space-y-2">
                 <label className="text-sm font-semibold text-slate-700 dark:text-zinc-300">

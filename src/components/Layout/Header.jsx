@@ -14,6 +14,7 @@ import {
 import { useAuth } from '../../context/AuthContext';
 import { useTheme } from '../../context/ThemeContext';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
+import { Button } from "@/components/ui/button";
 
 const Header = ({ isSidebarCollapsed, setIsSidebarCollapsed }) => {
   const { user, logout } = useAuth();
@@ -89,12 +90,14 @@ const Header = ({ isSidebarCollapsed, setIsSidebarCollapsed }) => {
       style={{ left: isSidebarCollapsed ? '80px' : '256px' }}>
       
       <div className="flex items-center gap-6">
-        <button 
+        <Button 
+          variant="ghost"
+          size="icon"
           onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
-          className="p-2 hover:bg-slate-100 dark:hover:bg-zinc-900 rounded-lg transition-all text-slate-500 dark:text-zinc-400"
+          className="text-slate-500 dark:text-zinc-400"
         >
           <Menu size={22} />
-        </button>
+        </Button>
         
         <h1 className="text-xl font-bold text-slate-800 dark:text-white tracking-tight">{getPageTitle()}</h1>
       </div>
@@ -118,6 +121,7 @@ const Header = ({ isSidebarCollapsed, setIsSidebarCollapsed }) => {
                   className="fixed inset-0 z-10" 
                   onClick={() => setIsNotificationsOpen(false)}
                 ></div>
+                
                 <div className="absolute right-0 mt-3 w-80 bg-white dark:bg-zinc-900 rounded-xl shadow-xl border border-slate-200 dark:border-zinc-800 py-0 z-20 animate-in fade-in zoom-in duration-200 overflow-hidden">
                   <div className="px-4 py-3 border-b border-slate-100 dark:border-zinc-800 flex items-center justify-between">
                     <p className="text-sm font-bold text-slate-800 dark:text-white">Notifications</p>

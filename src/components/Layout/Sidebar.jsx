@@ -16,7 +16,10 @@ import {
   TrendingUp,
   History,
   Camera,
-  BarChart3
+  BarChart3,
+  Users,
+  User,
+  Lock
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
@@ -37,15 +40,34 @@ const Sidebar = ({ isCollapsed, setIsCollapsed }) => {
         { name: 'Activity Level', icon: TrendingUp, path: '/reports/activity-level' },
         { name: 'Timeline', icon: History, path: '/reports/timeline' },
         { name: 'Screenshots', icon: Camera, path: '/reports/screenshots' },
-        { name: 'Task Reports', icon: BarChart3, path: '/reports/task-reports' },
+        // { name: 'Task Reports', icon: BarChart3, path: '/reports/task-reports' },
       ]
     },
     { name: 'Tasks', icon: CheckSquare, path: '/tasks' },
     { name: 'Projects', icon: FolderKanban, path: '/projects' },
     { name: 'Attendance', icon: CalendarCheck, path: '/attendance' },
-    { name: 'Time Requests', icon: Clock, path: '/time-requests' },
-    { name: 'My Company', icon: Building2, path: '/company', hasSubmenu: true },
-    { name: 'Settings', icon: Settings, path: '/settings', hasSubmenu: true },
+    // { name: 'Time Requests', icon: Clock, path: '/time-requests' },
+    { 
+      name: 'My Company', 
+      icon: Building2, 
+      path: '/company', 
+      hasSubmenu: true,
+      subItems: [
+        { name: 'Employees', icon: Users, path: '/company/employees' },
+        { name: 'Roles & Permissions', icon: FileText, path: '/company/roles' },
+      ]
+    },
+    { 
+      name: 'Settings', 
+      icon: Settings, 
+      path: '/settings', 
+      hasSubmenu: true,
+      subItems: [
+        { name: 'Profile', icon: User, path: '/settings/profile' },
+        { name: 'Change Password', icon: Lock, path: '/settings/password' },
+        { name: 'Email Templates', icon: FileText, path: '/settings/email-templates' },
+      ]
+    },
   ];
 
   const [expandedMenus, setExpandedMenus] = useState(['Reports']);

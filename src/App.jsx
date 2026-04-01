@@ -5,8 +5,20 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Layout from './components/Layout/Layout';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
+import Tasks from './pages/Tasks';
+import Projects from './pages/Projects';
 import MyProfile from './pages/MyProfile';
+import SettingsProfile from './pages/SettingsProfile';
+import ChangePassword from './pages/ChangePassword';
+import EmailTemplates from './pages/EmailTemplates';
+import Employees from './pages/Employees';
+import RolesPermissions from './pages/RolesPermissions';
 import TrackedHours from './pages/TrackedHours';
+
+import Attendance from './pages/Attendance';
+import ActivityLevel from './pages/ActivityLevel';
+import Timeline from './pages/Timeline';
+import Screenshots from './pages/Screenshots';
 
 // Placeholder components for routes
 const Placeholder = ({ title }) => (
@@ -29,14 +41,27 @@ function App() {
             <Route index element={<Dashboard />} />
             <Route path="reports">
               <Route path="tracked-hours" element={<TrackedHours />} />
+              <Route path="attendance" element={<Attendance />} />
+              <Route path="activity-level" element={<ActivityLevel />} />
+              <Route path="timeline" element={<Timeline />} />
+              <Route path="screenshots" element={<Screenshots />} />
               <Route path="*" element={<Placeholder title="Reports Page" />} />
             </Route>
-            <Route path="tasks" element={<Placeholder title="Tasks Page" />} />
-            <Route path="projects" element={<Placeholder title="Projects Page" />} />
-            <Route path="attendance" element={<Placeholder title="Attendance Page" />} />
+            <Route path="tasks" element={<Tasks />} />
+            <Route path="projects" element={<Projects />} />
+            <Route path="attendance" element={<Attendance />} />
             <Route path="time-requests" element={<Placeholder title="Time Requests" />} />
-            <Route path="company" element={<Placeholder title="My Company" />} />
-            <Route path="settings" element={<Placeholder title="Settings" />} />
+            <Route path="company">
+              <Route path="employees" element={<Employees />} />
+              <Route path="roles" element={<RolesPermissions />} />
+              <Route index element={<Navigate to="employees" replace />} />
+            </Route>
+            <Route path="settings">
+              <Route path="profile" element={<SettingsProfile />} />
+              <Route path="password" element={<ChangePassword />} />
+              <Route path="email-templates" element={<EmailTemplates />} />
+              <Route index element={<Navigate to="profile" replace />} />
+            </Route>
             <Route path="my-profile" element={<MyProfile />} />
           </Route>
 

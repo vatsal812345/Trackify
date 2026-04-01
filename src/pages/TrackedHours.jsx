@@ -93,7 +93,7 @@ const TrackedHours = () => {
                   <span className="text-slate-700 dark:text-zinc-300">{dateRange}</span>
                 </div>
                 <div className="bg-blue-600 text-white p-1 rounded">
-                   <Calendar size={12} />
+                    <Calendar size={12} />
                 </div>
               </button>
 
